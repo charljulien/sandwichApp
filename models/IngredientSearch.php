@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Sandwich;
+use app\models\Ingredient;
 
 /**
- * SandwichSearch represents the model behind the search form of `app\models\Sandwich`.
+ * IngredientSearch represents the model behind the search form of `app\models\Ingredient`.
  */
-class SandwichSearch extends Sandwich
+class IngredientSearch extends Ingredient
 {
     /**
      * {@inheritdoc}
@@ -17,9 +17,8 @@ class SandwichSearch extends Sandwich
     public function rules()
     {
         return [
-            [['idsandwich', 'check'], 'integer'],
-            [['name', 'description'], 'safe'],
-            [['price'], 'number'],
+            [['idingredients'], 'integer'],
+            [['name'], 'safe'],
         ];
     }
 
@@ -41,7 +40,7 @@ class SandwichSearch extends Sandwich
      */
     public function search($params)
     {
-        $query = Sandwich::find();
+        $query = Ingredient::find();
 
         // add conditions that should always apply here
 
@@ -59,13 +58,10 @@ class SandwichSearch extends Sandwich
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'idsandwich' => $this->idsandwich,
-            'price' => $this->price,
-            'check' => $this->check,
+            'idingredients' => $this->idingredients,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'description', $this->description]);
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

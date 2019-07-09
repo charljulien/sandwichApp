@@ -4,26 +4,20 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\SandwichSearch */
+/* @var $model app\models\CategorySearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="sandwich-search">
+<div class="category-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'idsandwich') ?>
+    <?= $form->field($model, 'idcategories') ?>
 
     <?= $form->field($model, 'name') ?>
-
-    <?= $form->field($model, 'description') ?>
-
-    <?= $form->field($model, 'price') ?>
-
-    <?= $form->field($model, 'check') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
